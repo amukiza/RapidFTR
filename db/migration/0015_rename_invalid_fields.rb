@@ -1,7 +1,7 @@
 sections = FormSection.all.all
 sections.each do |fs|
   next unless fs.form.nil?
-  fs.form = Form.find_by_name(Child::FORM_NAME)
+  fs.form = Form.find_by_name('Children')
   next if fs.save
   invalid_fields = fs.fields.select { |f| !f.valid? }
   invalid_fields.each { |f| f.name = f.name + SecureRandom.hex[0..5] }
